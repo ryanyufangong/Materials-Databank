@@ -1,9 +1,6 @@
 package com.ladakh.databanking.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table
@@ -11,7 +8,7 @@ public class Material {
 
     private long materialID;
     private String name;
-    private long materialTypeID;
+    private MaterialType materialType;
 
     @Id
     @Column(name = "material_id", nullable = false)
@@ -30,11 +27,12 @@ public class Material {
         this.name = name;
     }
 
-    @Column(name = "material_type_id")
-    public long getMaterialTypeID() {
-        return materialTypeID;
+    @ManyToOne
+    @JoinColumn(name = "material_id", nullable = false)
+    public MaterialType getMaterialType() {
+        return materialType;
     }
-    public void setMaterialTypeID(long materialTypeID) {
-        this.materialTypeID = materialTypeID;
+    public void setMaterialType(MaterialType materialType) {
+        this.materialType = materialType;
     }
 }

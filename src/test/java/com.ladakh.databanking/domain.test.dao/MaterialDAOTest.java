@@ -19,7 +19,7 @@ public class MaterialDAOTest {
         Material material = new Material();
         material.setMaterialID(1);
         material.setName("Aluminum");
-        material.setMaterialTypeID(1);
+        material.setMaterialID(1);
 
         Material material1 = materialDAO.save(material);
         Material materialTest = materialDAO.findByMaterialID(material1.getMaterialID());

@@ -8,7 +8,7 @@ public class MaterialProperty {
 
     private int propertyId;
     private String propertyCategory;
-    private MaterialPropertyCategory categoryId;
+    private MaterialPropertyCategory materialPropertyCategory;
 
     @Id
     @Column(name = "property_id")
@@ -30,9 +30,9 @@ public class MaterialProperty {
     @ManyToOne
     @JoinColumn(name = "category_id")
     public MaterialPropertyCategory getCategoryId() {
-        return categoryId;
+        return materialPropertyCategory;
     }
     public void setCategoryId(MaterialPropertyCategory categoryId) {
-        this.categoryId = categoryId;
+        this.materialPropertyCategory = categoryId;
     }
 }

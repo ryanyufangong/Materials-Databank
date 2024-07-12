@@ -20,17 +20,17 @@ public class MaterialPropertyValueDAOTest {
         matPropVal.setValue("200");
 
         MaterialPropertyValue matPropVal1 = matPropValDAO.save(matPropVal);
-        MaterialPropertyValue matPropValTest = matPropValDAO.findByMaterialIDAndPropertyID(matPropVal1.getValue());
-        Assertions.assertEquals(materialTest.getName(), "Aluminum");
+        MaterialPropertyValue matPropValTest = matPropValDAO.findByMaterialIDAndPropertyID(matPropVal1.getMaterial().getMaterialID(), matPropVal1.getMaterialProperty().getPropertyId());
+        Assertions.assertEquals(matPropValTest.getValue(), "Aluminum");
 
-        matPropVal1.setName("Iron");
-        matPropVal1 = materialDAO.save(matPropVal1);
-        materialTest = materialDAO.findByMaterialID(matPropVal1.getMaterialID());
-        Assertions.assertEquals(materialTest.getName(), "Iron");
+        matPropVal1.setValue("Iron");
+        matPropVal1 = matPropValDAO.save(matPropVal1);
+        matPropValTest = matPropValDAO.findByMaterialIDAndPropertyID(matPropVal1.getMaterial().getMaterialID(), matPropVal1.getMaterialProperty().getPropertyId());
+        Assertions.assertEquals(matPropValTest.getValue(), "Iron");
 
-        materialDAO.delete(material1);
-        materialTest = materialDAO.findByMaterialID(matPropVal1.getMaterialID());
-        Assertions.assertNull(materialTest);
+        matPropValDAO.delete(matPropVal1);
+        matPropValTest = matPropValDAO.findByMaterialIDAndPropertyID(matPropVal1.getMaterial().getMaterialID(), matPropVal1.getMaterialProperty().getPropertyId());
+        Assertions.assertNull(matPropValTest);
     }
 
 }
