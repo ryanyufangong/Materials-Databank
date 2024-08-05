@@ -3,7 +3,7 @@ package com.ladakh.databanking.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "Material")
 public class Material {
 
     private long materialID;
@@ -28,7 +28,7 @@ public class Material {
     }
 
     @ManyToOne
-    @JoinColumn(name = "material_id", nullable = false)
+    @JoinColumn(name = "material_type_id", nullable = false)
     public MaterialType getMaterialType() {
         return materialType;
     }

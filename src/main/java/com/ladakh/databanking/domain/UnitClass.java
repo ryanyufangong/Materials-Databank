@@ -3,22 +3,23 @@ package com.ladakh.databanking.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "unit_class")
 public class UnitClass {
-    private int classId;
+    private long classID;
     private String unitClassName;
     private Unit unit;
 
     @Id
-    @Column(name = "class_id", nullable = false)
-    public int getClassId() {
-        return classId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "unit_class_id", nullable = false)
+    public long getClassID() {
+        return classID;
     }
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setClassID(long classId) {
+        this.classID = classId;
     }
 
-    @Column(name = "unitClass_name")
+    @Column(name = "unit_class_name")
     public String getUnitClassName() {
         return unitClassName;
     }

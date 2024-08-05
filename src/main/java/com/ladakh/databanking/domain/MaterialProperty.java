@@ -3,21 +3,24 @@ package com.ladakh.databanking.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "material_property")
 public class MaterialProperty {
 
-    private int propertyId;
+    private long propertyID;
     private String propertyCategory;
     private MaterialPropertyCategory materialPropertyCategory;
+    private Unit unit;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "property_id")
-    public int getPropertyId() {
-        return propertyId;
+    public long getPropertyID() {
+        return propertyID;
     }
-    public void setPropertyId(int propertyId) {
-        this.propertyId = propertyId;
+    public void setPropertyID(long propertyID) {
+        this.propertyID = propertyID;
     }
+
 
     @Column(name = "property_Category")
     public String getPropertyCategory() {
@@ -29,10 +32,19 @@ public class MaterialProperty {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    public MaterialPropertyCategory getCategoryId() {
+    public MaterialPropertyCategory getMaterialPropertyCategory() {
         return materialPropertyCategory;
     }
-    public void setCategoryId(MaterialPropertyCategory categoryId) {
+    public void setMaterialPropertyCategory(MaterialPropertyCategory categoryId) {
         this.materialPropertyCategory = categoryId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "unit_id")
+    public Unit getUnit() {
+        return unit;
+    }
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 }

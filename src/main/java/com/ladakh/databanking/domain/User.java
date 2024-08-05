@@ -1,19 +1,21 @@
 package com.ladakh.databanking.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "s_user")
 public class User {
 
     private long userID;
     private String username;
+    private Set<Permission> permissions;
+    private Set<Group> groups;
 
     @Id
-    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", nullable = false)
     public long getUserID() {
         return userID;
     }
@@ -27,5 +29,25 @@ public class User {
     }
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "s_user_permission", joinColumns = {@JoinColumn(name="user_id", referencedColumnName = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "permission_id" ,referencedColumnName = "permission_id")})
+    public Set<Permission> getPermissions() {
+        return permissions;
+    }
+    public void setPermissions(Set<Permission> permissions) {
+        this.permissions = permissions;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "s_user_group", joinColumns = {@JoinColumn(name="user_id", referencedColumnName = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "group_id" ,referencedColumnName = "group_id")})
+    public Set<Group> getGroups() {
+        return groups;
+    }
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
     }
 }

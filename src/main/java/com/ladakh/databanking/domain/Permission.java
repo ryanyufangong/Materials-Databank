@@ -1,27 +1,27 @@
 package com.ladakh.databanking.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "s_permission")
 public class Permission {
-    private int permissionID;
+    private long permissionID;
     private String name;
     private String description;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "permission_id", nullable = false)
-    public int getPermissionID() {
+    public long getPermissionID() {
         return permissionID;
     }
-    public void setPermissionID(int permissionID) {
+    public void setPermissionID(long permissionID) {
         this.permissionID = permissionID;
     }
 
-    @Column(name = "name")
+    @Column(name = "permission_name")
     public String getName() {
         return name;
     }
@@ -29,11 +29,12 @@ public class Permission {
         this.name = name;
     }
 
-    @Column(name = "description")
+    @Column(name = "permission_description")
     public String getDescription() {
         return description;
     }
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

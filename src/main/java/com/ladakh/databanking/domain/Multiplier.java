@@ -3,15 +3,16 @@ package com.ladakh.databanking.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "multiplier")
 public class Multiplier {
     private long multiplierID;
     private Unit unit1ID;
     private Unit unit2ID;
-    private long unit1Multiplier;
-    private long unit2Multiplier;
+    private double unit1Multiplier;
+    private double unit2Multiplier;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "multiplier_id", nullable = false)
     public long getMultiplierID() {
         return multiplierID;
@@ -39,18 +40,18 @@ public class Multiplier {
     }
 
     @Column(name = "unit1_multiplier")
-    public long getUnit1Multiplier() {
+    public double getUnit1Multiplier() {
         return unit1Multiplier;
     }
-    public void setUnit1Multiplier(long unit1Multiplier) {
+    public void setUnit1Multiplier(double unit1Multiplier) {
         this.unit1Multiplier = unit1Multiplier;
     }
 
     @Column(name = "unit2_multiplier")
-    public long getUnit2Multiplier() {
+    public double getUnit2Multiplier() {
         return unit2Multiplier;
     }
-    public void setUnit2Multiplier(long unit2Multiplier) {
+    public void setUnit2Multiplier(double unit2Multiplier) {
         this.unit2Multiplier = unit2Multiplier;
     }
 }

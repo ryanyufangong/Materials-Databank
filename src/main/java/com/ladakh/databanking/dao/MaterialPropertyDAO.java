@@ -9,6 +9,6 @@ import org.springframework.data.mapping.model.Property;
 import org.springframework.data.repository.query.Param;
 
 public interface MaterialPropertyDAO extends JpaRepository<MaterialProperty, Long> {
-    @Query("select p from MaterialProperty p where propertyId =:propertyId")
-    MaterialProperty findByPropertyID(@Param("propertyId")long MaterialProperty);
+    @Query("select p from MaterialProperty p where p.propertyID =:propertyID")
+    MaterialProperty findByPropertyID(@Param("propertyID")long materialPropertyID);
 }

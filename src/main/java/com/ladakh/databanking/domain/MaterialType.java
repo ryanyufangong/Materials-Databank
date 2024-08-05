@@ -3,14 +3,15 @@ package com.ladakh.databanking.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "Material_Type")
 public class MaterialType {
 
     private long materialTypeID;
     private String name;
-    private Material material;
+    private MaterialType parentMaterialType;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type_id")
     public long getMaterialTypeID() {
         return materialTypeID;
@@ -28,11 +29,11 @@ public class MaterialType {
     }
 
     @ManyToOne
-    @JoinColumn(name = "material_id", nullable = false)
-    public Material getMaterial() {
-        return material;
+    @JoinColumn(name = "parent_material_type")
+    public MaterialType getParentMaterialType() {
+        return parentMaterialType;
     }
-    public void setMaterial(Material material) {
-        this.material = material;
+    public void setParentMaterialType(MaterialType parentMaterialType) {
+        this.parentMaterialType = parentMaterialType;
     }
 }

@@ -2,16 +2,25 @@ package com.ladakh.databanking.domain;
 
 import jakarta.persistence.*;
 
-
+@Entity
+@Table(name = "material_property_value")
 public class MaterialPropertyValue {
 
-    //private long valueID;
+    private long valueID;
     private String value;
     private Material material;
     private MaterialProperty materialProperty;
 
+    @Id
+    @Column(name = "property_value_id")
+    public long getValueID() {
+        return valueID;
+    }
+    public void setValueID(long valueID) {
+        this.valueID = valueID;
+    }
 
-    @Column(name = "values")
+    @Column(name = "property_value")
     public String getValue() {
         return value;
     }
@@ -28,7 +37,7 @@ public class MaterialPropertyValue {
         this.material = material;
     }
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "property_id")
     public MaterialProperty getMaterialProperty() {
         return materialProperty;

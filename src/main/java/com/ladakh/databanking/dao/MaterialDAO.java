@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface MaterialDAO extends JpaRepository<Material, Long>{
 
-    @Query("select m from Material m where materialID =:materialID")
+    @Query("select m from Material m where m.materialID =:materialID")
     Material findByMaterialID(@Param("materialID")long Material);
 }

@@ -1,17 +1,15 @@
 package com.ladakh.databanking.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "unit")
 public class Unit {
     private long unitID;
     private String unitName;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "unit_id", nullable = false)
     public long getUnitID() {
         return unitID;

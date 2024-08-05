@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface MaterialPropertyCategoryDAO extends JpaRepository<MaterialPropertyCategory, Long> {
-    @Query("select c from MaterialPropertyCategory c where categoryId =:categoryId")
+    @Query("select c from MaterialPropertyCategory c where c.categoryId =:categoryId")
     MaterialPropertyCategory findBycategoryId(@Param("categoryId")long MaterialPropertyCategory);
 }

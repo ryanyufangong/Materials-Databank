@@ -6,18 +6,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "MaterialPropertyCategory")
 public class MaterialPropertyCategory {
 
-    private int categoryId;
+    private long categoryId;
     private String name;
 
     @Id
     @Column(name = "category_id")
-    public int getCategoryId() {
+    public long getCategoryId() {
         return categoryId;
     }
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
     }
 
