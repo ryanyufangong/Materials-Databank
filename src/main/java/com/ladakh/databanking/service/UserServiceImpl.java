@@ -23,5 +23,34 @@ public class UserServiceImpl implements UserService{
         return user.getUsername();
     }
 
+    public String getPassword(long userID) {
+        User user = new User();
+        return user.getPassword();
+    }
+
+    public String changePassword(long userID, String newPassword) {
+        User user = new User();
+        user.setPassword(newPassword);
+        user = userDAO.save(user);
+        return user.getPassword();
+    }
+
+    public String createNewUser(String password, String username) {
+        User user = new User();
+        user.setPassword(password);
+        user.setUsername(username);
+        user = userDAO.save(user);
+        return "success";
+    }
+
+    public Boolean checkUserExists(String username) {
+        User user = userDAO.findByUsername(username);
+        return user != null;
+    }
+
+    public Boolean checkUserAndPwd(String username, String password) {
+        User user = userDAO.findByUsername(username);
+        return user != null && user.getPassword() != null && user.getPassword().equals(password);
+    }
 
 }

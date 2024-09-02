@@ -9,6 +9,7 @@ import java.util.Set;
 public class User {
 
     private long userID;
+    private  String password;
     private String username;
     private Set<Permission> permissions;
     private Set<Group> groups;
@@ -21,6 +22,14 @@ public class User {
     }
     public void setUserID(long userID) {
         this.userID = userID;
+    }
+
+    @Column(name = "user_password")
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Column(name = "username")
