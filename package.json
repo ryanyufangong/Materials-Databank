@@ -2,6 +2,7 @@
   "name": "ladakh-systems-databank",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://localhost:8080/build",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",

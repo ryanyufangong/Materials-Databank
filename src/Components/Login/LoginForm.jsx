@@ -30,7 +30,7 @@ const LoginForm = () => {
         setUser('');
         setPwd('');
         let isAuthenticated = false;
-        fetch(`http://localhost:8080/user/checkUserAndPwd`, {
+        fetch(`http://localhost:8000/user/checkUserAndPwd`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({"username": user, "password": pwd})

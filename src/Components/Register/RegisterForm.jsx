@@ -63,7 +63,7 @@ const RegisterForm = () => {
             return;
         }
         let isAuthenticated = false;
-        fetch('http://localhost:8080/user/checkUserExists', {
+        fetch('http://localhost:8000/user/checkUserExists', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({"username": user})
