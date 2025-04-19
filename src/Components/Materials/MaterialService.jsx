@@ -6,6 +6,8 @@ const API_URL = "http://localhost:8000/material/getMaterialsFromMaterialTypeID";
 
 export const fetchMaterialsByType = async (materialTypeId) => {
     try {
+        console.log("Sending request with:", JSON.stringify({ material_type_id: parseInt(materialTypeId) }));
+
         const response = await fetch(API_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },

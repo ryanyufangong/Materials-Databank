@@ -1,10 +1,10 @@
 // src/models/Material.js
 
 class Material {
-    constructor(id, name, material_type_id) {
+    constructor(id, name, materialTypeID) {
         this.id = id;
         this.name = name;
-        this.material_type_id = material_type_id;
+        this.materialTypeID = materialTypeID;
     }
 }
 

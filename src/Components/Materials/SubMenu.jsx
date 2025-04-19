@@ -48,8 +48,10 @@ const SubMenu = ({ item, setActiveContent }) => {
     };
 
     const handleClick = (title, materialTypeId) => {
+        console.log("Clicked on:", title, "MaterialTypeID:", materialTypeId);
         setActiveContent({ title, materialTypeId });
     };
+
 
     return (
         <>
@@ -57,7 +59,8 @@ const SubMenu = ({ item, setActiveContent }) => {
                 onClick={() => {
                     showSubnav();
                     if (!item.subNav) {
-                        setActiveContent(item.materialTypeId);
+                        handleClick(item.title, item.materialTypeId);
+                        //setActiveContent(item.materialTypeId);
                     }
                 }}
             >
