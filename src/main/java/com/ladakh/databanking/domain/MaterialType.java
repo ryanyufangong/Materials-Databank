@@ -1,6 +1,7 @@
 package com.ladakh.databanking.domain;
 
 import jakarta.persistence.*;
+import org.springframework.data.util.Lazy;
 
 @Entity
 @Table(name = "Material_Type")
@@ -28,12 +29,14 @@ public class MaterialType {
         this.name = name;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "parent_material_type")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parent_material_type", referencedColumnName = "type_id")
     public MaterialType getParentMaterialType() {
         return parentMaterialType;
     }
     public void setParentMaterialType(MaterialType parentMaterialType) {
         this.parentMaterialType = parentMaterialType;
     }
+
+
 }

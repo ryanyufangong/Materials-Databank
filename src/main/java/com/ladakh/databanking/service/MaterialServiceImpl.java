@@ -5,6 +5,8 @@ import com.ladakh.databanking.domain.Material;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MaterialServiceImpl implements MaterialService{
     @Resource
@@ -31,5 +33,9 @@ public class MaterialServiceImpl implements MaterialService{
     public String getMaterialTypeParentName(long materialID) {
         Material material = materialDAO.findByMaterialID(materialID);
         return material.getMaterialType().getParentMaterialType().getName();
+    }
+
+    public List<Material> getMaterialsFromMaterialTypeID(long materialTypeID) {
+        return materialDAO.findMaterialsByTypeID(materialTypeID);
     }
 }

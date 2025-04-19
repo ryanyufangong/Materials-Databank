@@ -56,4 +56,5 @@ public class UserController {
     public Boolean checkUserAndPwd(@RequestBody Map<String, String> requestParams) {
         return userService.checkUserAndPwd(requestParams.get("username"), requestParams.get("password"));
     }
+
 }

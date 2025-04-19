@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 public class MaterialDAOTest extends BaseSpringTest {
 
@@ -45,7 +47,6 @@ public class MaterialDAOTest extends BaseSpringTest {
     public void testMaterialType() {
         MaterialType materialType = new MaterialType();
         materialType.setName("Cast Superalloy");
-
         MaterialType savedMaterialType = materialTypeDAO.save(materialType);
 
         Material material = new Material();
@@ -62,5 +63,33 @@ public class MaterialDAOTest extends BaseSpringTest {
         materialTest = materialDAO.findByMaterialID(savedMaterial.getMaterialID());
         Assertions.assertNull(materialTest);
     }
+
+    @Test
+    @Transactional
+    public void testGetMaterialsFromTypeID() {
+        MaterialType materialType = new MaterialType();
+        materialType.setName("Corrosion Resistant Alloys");
+        MaterialType savedMaterialType = materialTypeDAO.save(materialType);
+
+        Material material1 = new Material();
+        material1.setMaterialID(1);
+        material1.setName("Alloy 20");
+        material1.setMaterialType(savedMaterialType);
+
+        Material material2 = new Material();
+        material2.setMaterialID(2);
+        material2.setName("Alloy 30");
+        material2.setMaterialType(savedMaterialType);
+
+        Material savedMaterial1 = materialDAO.save(material1);
+        Material savedMaterial2 = materialDAO.save(material2);
+
+        List<Material> materialTest = materialDAO.findMaterialsByTypeID(savedMaterialType.getMaterialTypeID());
+        Assertions.assertEquals(materialTest.size(), 2);
+
+
+    }
+
+
 
 }
