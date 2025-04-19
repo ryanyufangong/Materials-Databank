@@ -1,0 +1,4 @@
+com\ladakh\databanking\domain\Material.class
+com\ladakh\databanking\domain\MaterialType.class
+com\ladakh\databanking\domain\User.class
+com\ladakh\databanking\controller\ReactAppController.class
